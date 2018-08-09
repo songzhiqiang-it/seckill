@@ -17,6 +17,18 @@ CREATE TABLE seckill(
   key idx_create_time(create_time)
 )ENGINE=INNODB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8 COMMENT='秒杀库存表';
 
+/**
+如果上面创建表的操作失败，报错如下：
+Mysql ERROR 1067: Invalid default value for ‘date’ 解决
+是数据库sql_mode的问题，
+使用下面的sql解决，参考：https://blog.csdn.net/zhanghw0917/article/details/70176168
+
+show variables like 'sql_mode';
+set sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,ALLOW_INVALID_DATES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+*/
+
+
+
 -- 初始化数据
 INSERT into seckill(name,number,start_time,end_time)
 VALUES
